@@ -22,7 +22,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ asset('adminlte/index2.html')}}"><b>Admin</b>LTE</a>
+    <a href="{{ asset('adminlte/index2.html')}}"><b>Perpustakaan</b></a>
     @include('layouts._flash')
   </div>
   <!-- /.login-logo -->
