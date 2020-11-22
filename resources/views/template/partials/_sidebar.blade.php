@@ -43,6 +43,15 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{ route('members.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-book-reader"></i>
+            <p>
+              Member
+              {{-- <span class="right badge badge-danger">New</span> --}}
+            </p>
+          </a>
+        </li>
         @endrole
         <li class="nav-item">
           <a href="{{ route('books.index') }}" class="nav-link">

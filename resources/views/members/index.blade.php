@@ -47,17 +47,17 @@
                 @foreach ($members as $item)
                 <tr>
                   <td>{{ $no++ }}</td>
-                  <td>{{ $item->name }}
+                  <td> <a href="{{ route('members.show',$item->id) }}">{{ $item->name }}</a>
                   </td>
                   <td>{{ $item->email }}</td>
                   <td>
-                    {{-- <a href="{{ route('authors.edit',$item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm" id="delete" data-title="{{ $item->name }}" href="{{ route('authors.destroy',$item->id) }}"><i class="fas fa-trash"></i></button>
+                    {{-- <a href="{{ route('authors.edit',$item->id) }}" class="btn btn-warning btn-sm">Edit</a> --}}
+                    <button class="btn btn-danger btn-sm" id="delete" data-title="{{ $item->name }}" href="{{ route('members.destroy',$item->id) }}"><i class="fas fa-trash"></i></button>
                                 <form action="" id="deleteForm" method="post">
                                     @csrf
                                     @method("DELETE")
                                     <input type="submit" value="" style="display:none">
-                                </form> --}}
+                                </form>
                   </td>
                 </tr>
                 @endforeach
@@ -120,13 +120,13 @@
 @endsection
 @section('script')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-{{-- <script>
+<script>
   $('button#delete').on('click', function(){
       var href= $(this).attr('href');
       var title= $(this).data('title')
 
       swal({
-              title: "Apakah Kamu Yakin Akan Menghapus Author " +title+ "?",
+              title: "Apakah Kamu Yakin Akan Menghapus Member " +title+ "?",
               text: "Data yang terhapus tidak bisa dikembalikan",
               icon: "warning",
               buttons: true,
@@ -143,7 +143,7 @@
           });
 
   });
-</script> --}}
+</script>
 <script>
     $(function () {
       $("#example1").DataTable();

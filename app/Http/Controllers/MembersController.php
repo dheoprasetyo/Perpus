@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Role;
 use App\User;
+use App\Book;
 use Hash;
+use App\BorrowLog;
+
 use App\Http\Requests\StoreMemberRequest;
 use App\Http\Requests\UpdateMemberRequest;
 use Illuminate\Support\Facades\Session;
@@ -68,7 +71,8 @@ class MembersController extends Controller
      */
     public function show($id)
     {
-        //
+        $member = User::find($id);
+        return view('members.show', compact('member'));
     }
 
     /**
@@ -105,6 +109,20 @@ class MembersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $member = User::find($id);
+        // $borrowLogs = BorrowLog::with($member)->borrowed()->get();
+
+        // $members = $member->borrowLogs()->borrowed()->get();
+        if ($member->hasRole('member')) {
+            if($member->borrowLogs()->borrowed()->count() > 0 ) {
+                // dd($member);
+                return redirect()->route('members.index')->with('sukses','tidak Berhasil dihapus ' . $member->name);
+            }
+            // echo "hai" ;
+                $member->delete();
+        }
+                // dd($member);
+                return redirect()->route('members.index')->with('sukses','Berhasil dihapus ');
+        // }
     }
 }

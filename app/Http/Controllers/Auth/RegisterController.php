@@ -111,7 +111,7 @@ class RegisterController extends Controller
             $user->sendVerification();
             Session::flash("flash_notification", [
                 "level" =>"success",
-                "message"=>"silahkan klik pada link aktivasi yang dikriim"
+                "message"=>"silahkan klik pada link aktivasi yang dikrim"
             ]);
         }
         return redirect('/login');
